@@ -8,8 +8,6 @@ from datetime import datetime
 import argparse
 import shutil
 
-from preprocess2 import interpolatemp4
-
 def log_message(message, log_file=None):
     """打印并保存日志"""
     print(message)
@@ -36,7 +34,7 @@ def pic2video(stats_csv, data_root, fps=30, log_path=None, output_root=None):
 
         # 检查 video 是否存在，如果存在就不生成了
         if os.path.isfile(video_path):
-            log_message("✅ 已存在 video_RAW_RGBA.avi，跳过生成", log_path)
+            log_message("✅ 已存在 video_RAW_RGBA.avi，跳过生成，直接复制", log_path)
             os.makedirs(os.path.dirname(output_path), exist_ok=True)
             shutil.copy2(video_path, output_path)
             log_message(f"✅ 已复制到: {output_path}", log_path)

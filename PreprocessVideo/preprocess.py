@@ -113,6 +113,28 @@ def interpolate(stats_csv, data_root, output_root): # 生理数据插值到帧�
             except Exception as e:
                 print(f"❌ 插值失败 {data_file}: {e}")
 
+def copy_zip_videos(stats_csv, data_root, output_root, log_path=None):
+    """
+    遍历 stats_csv 中的 file_path 列，查找每个文件夹下的 video_ZIP_H264.avi，
+    并复制到 output_root 的对应路径下。
+    """
+    df = pd.read_csv(stats_csv)
+
+    for _, row in df.iterrows():
+        folder_path = os.path.join(data_root, row["file_path"].replace("/", os.sep))
+        input_path = os.path.join(folder_path, "video_ZIP_H264.avi")
+        output_path = os.path.join(output_root, row["file_path"].replace("/", os.sep), "video_ZIP_H264.avi")
+
+        if os.path.isfile(input_path):
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
+            shutil.copy2(input_path, output_path)
+            if log_path:
+                with open(log_path, "a", encoding="utf-8") as f:
+                    f.write(f"📂 复制 {input_path} -> {output_path}\n")
+            print(f"✅ 复制成功: {input_path} -> {output_path}")
+        else:
+            print(f"⚠️ 未找到 {input_path}")
+
 
 def main():
     stats_csv = r"/root/jjt/SpO2Dataset/PreprocessVideo/test.csv"
@@ -127,6 +149,11 @@ def main():
     # 生理数据插值并另存到 output_root
     print("\n=== Step 2: interpolate ===")
     interpolate(stats_csv, data_root, output_root=output_root)
+
+    # 复制 ZIP 视频到 output_root
+    print("\n=== Step 3: copy zip videos ===")
+    copy_zip_videos(stats_csv, data_root, output_root, log_path=log_path)
+
 
 if __name__ == "__main__":
     main()

@@ -101,7 +101,7 @@ def interpolate(stats_csv, data_root, output_root): # 生理数据插值到帧�
                 data_interp = np.interp(frame_ts, data_ts, data_val)
 
                 # 保存
-                out_file = os.path.join(output_path, f"{datatype}_interp.csv")
+                out_file = os.path.join(output_path, f"{datatype}.csv")
                 pd.DataFrame({
                     f"{datatype.lower()}": data_interp,
                     "timestamp": frame_ts

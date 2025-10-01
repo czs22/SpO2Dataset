@@ -1,0 +1,3 @@
+file_path,skin_tone,subject_id,min_spo2,max_spo2,min_hr,max_hr,gender,age,nationality,COVID,high_altitude,light,ISO,F,light_mode,note,pictures_count,BVP_count,HR_count,RR_count,SpO2_count,missed_frames_count,mp4_frame_count,mp4_duration,h264_frame_count,h264_duration,yuv420_frame_count,yuv420_duration,rgba_frame_count,rgba_duration
+070200/v01,2,1,89,96,76,93,male,22,China,yes,no,500,auto,auto,global_exposure,,16530,11163,551,0,551,0,27120,542,16530,551,0,0,16530,551
+070201/v01,3,2,94,98,64,83,male,20,China,yes,yes,500,auto,auto,global_exposure,,16198,10951,540,0,540,0,28416,568,16198,539,0,0,16198,539

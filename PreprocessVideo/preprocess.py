@@ -115,10 +115,10 @@ def interpolate(stats_csv, data_root, output_root): # 生理数据插值到帧�
 
 
 def main():
-    stats_csv = r"D:\code\HCI_project\202509\stat_test2.csv"
-    data_root = r"E:\test2"
-    output_root = r"E:\test2_output"
-    log_path = r"D:\code\HCI_project\202509\preprocess_log.txt"
+    stats_csv = r"/root/jjt/SpO2Dataset/PreprocessVideo/test.csv"
+    data_root = r"/root/datasets/rSpO2/data"
+    output_root = r"/root/jjt/dataset_out"
+    log_path = r"/root/jjt/pre.log"
 
     # 生成 RGBA 视频到 output_root
     print("\n=== Step 1: pic2video ===")

@@ -15,3 +15,6 @@ mark_colorcheck.py
 get_allframe.py
 加载colorcheck_frame1.csv和视频
 提取色卡位点的颜色，保存到video_color_data.csv
+
+color_correction.py
+加载video_color_data.csv和segment.mp4，生成segment_corrected.mp4

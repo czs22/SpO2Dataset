@@ -95,7 +95,7 @@ def process_video_color_correction(df,input_video_path=None,output_video_path=No
         ret, frame = cap.read()
         if not ret:
             break
-        frame_data = df[df['frame'] == frame_idx]
+        frame_data = df[df['frame'] == frame_idx+1]
         if len(frame_data) > 0:
             current_colors = []
             for i in range(1, 25):
@@ -127,4 +127,5 @@ if __name__ == "__main__":
     print("正在读取CSV文件...")
     df = pd.read_csv(csv_path)
     process_video_color_correction(df, input_video_path, output_video_path,max_frame)
+
     print(f"总耗时: {time.time()-t:.2f} 秒")

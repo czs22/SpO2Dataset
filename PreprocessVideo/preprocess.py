@@ -41,7 +41,7 @@ def pic2video(stats_csv, data_root, fps=30, log_path=None, output_root=None):
 
         else:
             log_message("🚀 未找到 video_RAW_RGBA.avi，开始生成...", log_path)
-
+            os.makedirs(os.path.dirname(output_path), exist_ok=True)
             cmd = [ # 已测试，命令能够保持帧与图像完全对应
                 "ffmpeg",
                 "-framerate", str(fps),
@@ -137,10 +137,10 @@ def copy_zip_videos(stats_csv, data_root, output_root, log_path=None):
 
 
 def main():
-    stats_csv = r"/root/jjt/SpO2Dataset/PreprocessVideo/test.csv"
-    data_root = r"/root/datasets/rSpO2/data"
-    output_root = r"/root/jjt/dataset_out"
-    log_path = r"/root/jjt/pre.log"
+    stats_csv = r"/data1/disk/3/jjt/SpO2Dataset/PreprocessVideo/filelist_stats.csv"
+    data_root = r"/data1/disk/3/experiment/data"
+    output_root = r"/data1/disk/3/experiment_processed/data"
+    log_path = r"/data1/disk/3/jjt/files/pre.log"
 
     # 生成 RGBA 视频到 output_root
     print("\n=== Step 1: pic2video ===")
